@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de création de pages Notion",
+    "version": "1.0.0",
+    "description": "Cette API permet de créer des pages Notion en utilisant des informations spécifiques."
+  },
+  "servers": [
+    {
+      "url": "https://api.notion.com",
+      "description": "Serveur principal pour l'API de création de pages Notion"
+    }
+  ],
+  "paths": {
+    "/createPage": {
+      "get": {
+        "summary": "Crée une page Notion avec des informations spécifiques",
+        "operationId": "createNotionPage",
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "required": true,
+            "description": "Le sujet de la page Notion à créer",
+            "schema": {
+              "type": "string",
+              "format": ""
+            }
+          },
+          {
+            "name": "templateUrl",
+            "in": "query",
+            "required": false,
+            "description": "L'URL du guide des templates Notion à utiliser",
+            "schema": {
+              "type": "string",
+              "default": "https://www.notion.so/fr-fr/help/guides/the-ultimate-guide-to-notion-templates",
+              "format": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Page Notion créée avec succès",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Échec de la création de la page Notion"
+          }
+        }
+      }
+    }
+  }
+}
